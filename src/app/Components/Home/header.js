@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
-import berterLogo from "../../../public/Icons/barterlogo.png";
-import bertertext from "../../../public/Icons/bartertext.png";
+import berterLogo from "../../../../public/Icons/barterlogo.png";
+import bertertext from "../../../../public/Icons/bartertext.png";
 import { useEffect } from "react";
 import { gsap } from "gsap";
 
