@@ -22,7 +22,7 @@ export default function About() {
                     <div className="w-[6.5rem] bg-white flex flex-col items-center opacity-[0.5]">
                         <select
                             id="language"
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none"
                             onChange={detectChange}
                             value={language}
                         >
