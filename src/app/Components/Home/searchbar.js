@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link"
 import Image from "next/image"
 import Logs from "../../../../public/Icons/Signup.png"
 export default function Searchbar() {
@@ -14,18 +15,22 @@ export default function Searchbar() {
                     </button>
                 </div>
                 <div>
-                    <span className="hidden min-md:block ">
-                        <button
-                            class="relative w-32 h-10 ml-4 bg-transparent border-2 border-gray-400 rounded-full text-gray-500 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out hover:shadow-lg"
-                        >
-                            <span class="font-semibold tracking-wide">Login/Signup</span>
-                            <div
-                                class="absolute top-0 left-0 w-10 h-10 bg-gray-900 rounded-full opacity-0 transform translate-x-2 transition-all duration-500 ease-in-out group-hover:opacity-100 "
-                            ></div>
-                        </button>
+                    <span className="hidden min-md:block ml-2">
+                        <Link href={'/login'}>
+                            <button
+                                class="relative w-32 h-10  bg-transparent border-2 border-gray-400 rounded-full text-gray-500 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out hover:shadow-lg"
+                            >
+                                <span class="font-semibold tracking-wide">Login/Signup</span>
+                                <div
+                                    class="absolute top-0 left-0 w-10 h-10 bg-gray-900 rounded-full opacity-0 transform translate-x-2 transition-all duration-500 ease-in-out group-hover:opacity-100 "
+                                ></div>
+                            </button>
+                        </Link>
                     </span>
                     <span className="hidden md:block ml-2 transition-all duration-300 ease-in-out hover:opacity-[0.8] cursor-pointer">
-                        <Image className="w-12" src={Logs} />
+                        <Link href={'/login'}>
+                            <Image className="w-12" src={Logs} />
+                        </Link>
                     </span>
 
                 </div>

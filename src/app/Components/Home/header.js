@@ -19,7 +19,7 @@ export default function Header() {
 
     return (
         <div className="flex sm:flex-col justify-center items-center w-full h-[32rem] sm:h-[38rem] bg-gray-200 pl-[10%] pr-[10%] sm:mt-[-15rem]">
-            <div>
+            <div >
                 <Image className="" src={bertertext} alt="Barter text image" />
             </div>
             <div id="berterlogo" className="sm:mt-[-100px]">
