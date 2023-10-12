@@ -1,7 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import StoreProvider from '../../public/RTK/storeProvider'
-
 const inter = Inter({ subsets: ['latin'] })
 
 

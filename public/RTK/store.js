@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { LogSlice } from './Slices/logSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import LoginSlice from "./Slices/loginSlice";
+import signinSlice from "./Slices/signinSlice";
 
 export const Store = configureStore({
     reducer: {
-        LogsStatus: LogSlice
+        loginState: LoginSlice,
+        signinState: signinSlice
     }
 })
