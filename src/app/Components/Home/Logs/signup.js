@@ -1,5 +1,3 @@
-'use client'
-import Link from "next/link"
 import { useDispatch } from "react-redux"
 import { signinVisibility } from "../../../../../public/RTK/Slices/signinSlice"
 import { loginVisibility } from "../../../../../public/RTK/Slices/loginSlice"

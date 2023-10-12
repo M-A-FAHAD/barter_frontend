@@ -25,7 +25,7 @@ import overseasjobs from '../../../../public/Icons/remotejob.png'
 
 //styles section
 const rows = `flex `
-const boxes = `flex justify-center items-center bg-gray-200 hover:bg-gray-100 m-2 w-[15rem] h-[5rem] p-2 rounded cursor-pointer `
+const boxes = `flex justify-center items-center bg-gray-200 hover:bg-gray-100 m-2 w-[15rem] h-[5rem] p-2 rounded cursor-pointer shadow-md offset-x-10 offset-y-10 blur-10 hover:scale-105 transition-transform ease duration-200`
 const imgDiv = ``
 const imges = `w-10`
 const textDiv = `pl-2`

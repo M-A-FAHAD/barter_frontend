@@ -10,7 +10,7 @@ import { useSelector } from "react-redux"
 //signup and login features
 import Login from "./Logs/login"
 import Signup from "./Logs/signup"
-const logscss = "w-full h-[100vh] backdrop-blur-sm  absolute top-0 left-0 z-50"
+const logscss = "absolute w-[100vw] h-[100vh] top-0 left-0 backdrop-blur-sm  absolute  z-50"
 
 export default function Homepage() {
     const loginState = useSelector(state => state.loginState)

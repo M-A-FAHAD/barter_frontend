@@ -15,8 +15,8 @@ export default function Searchbar() {
     }
     return (
         <div className=" p-8 flex justify-center items-center w-full bg-gray-200 ">
-            <div className="w-[62rem] flex">
-                <div className="w-[100%] h-10 flex overflow-hidden rounded-full">
+            <div className="w-[62rem] flex ">
+                <div className="w-[100%] h-10 flex overflow-hidden rounded-full ">
                     <input className="bg-gray-100 h-full w-[90%] sm:w-[85%] pl-4 focus:outline-none " type="text" name="search" placeholder="Search you products" />
                     <button className=" h-full w-[10%] sm:w-[15%] bg-white flex justify-center items-center hover:bg-gray-100">
                         <svg className="opacity-[0.3]" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
