@@ -44,7 +44,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="absolute w-full pt-4 flex justify-center sm:mt-80 sm:ml-[10%] vsm:ml-[5%] sm:h-[232px] sm:w-[89px]">
+        <div className="absolute w-full pt-4 flex justify-center sm:mt-80 sm:ml-[10%] vsm:ml-[5%] sm:h-[232px] sm:w-[89px] z-50">
             <div id="main_div" className={`flex items-center sm:flex-col sm:justify-center`}>
                 <div id="left-nav" className={opacityClass}>
                     <ul className={`flex mr-[-15px] pr-[20px] sm:block`}>

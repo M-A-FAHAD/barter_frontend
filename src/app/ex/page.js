@@ -1,13 +1,26 @@
 'use client'
 import Image from "next/image"
 import filterIco from "../../../public/Icons/filter.png"
-import Filter from "../Components/EX_page/Filter/filter"
+import Filterindex from "../Components/EX_page/Filter/index"
 import ProductCard from "../Components/EX_page/Product/productCard"
 import PageNavigator from "../Components/EX_page/Product/pageNavigator"
+import { useState } from "react"
+import { gsap } from "gsap"
 export default function page() {
+    const [filterIndex, setFilterIndex] = useState(false)
+    const filterVisiblity = () => {
+        filterIndex ? setFilterIndex(false) : setFilterIndex(true)
+        gsap.from('#filterImage', { rotate: 360, duration: 0.5 })
+        if (!filterIndex) {
+            gsap.to("#filterIndex", {
+                y: 500,
+                duration: 5
+            })
+        }
+    }
     return (
-        <div className="flex justify-center">
-            <div className="h-auto border mt-20 mb-20 w-[50rem] flex rounded overflow-hidden ">
+        <div className="flex  justify-center">
+            <div className="h-auto border mt-6 mb-20 w-[50rem] flex rounded overflow-hidden ">
                 {/* this is filter section  */}
                 <div className=" w-1/3   md:hidden">
                     <div className="w-full p-2 bg-gray-300 flex justify-center items-center">
@@ -15,13 +28,16 @@ export default function page() {
                         <p className="font-bold pl-2 pt-2">FILTER</p>
                     </div>
                     <div>
-                        <Filter />
+                        <Filterindex />
                     </div>
                     <hr className="w-[95%] ml-[2.5%]" />
                 </div>
                 {/* this is product cart section */}
                 <div className="w-2/3 md:w-full">
                     <div className="bg-gray-200  flex items-center">
+                        <div onClick={filterVisiblity} className="pl-2 cursor-pointer opacity-75 min-md:hidden ">
+                            <Image src={filterIco} className="w-10" id="filterImage"></Image>
+                        </div>
                         <input className=" p-2.5 rounded-l-full ml-2 bg-gray-100 h-full w-[90%] sm:w-[85%] pl-4 focus:outline-none " type="text" name="search" placeholder="Search you products" />
                         <button className="h-10 rounded-r-full m-2 ml-0 w-10 bg-gray-100 flex justify-center items-center hover:bg-gray-300">
                             <svg className="opacity-[0.3]" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
@@ -29,6 +45,7 @@ export default function page() {
                             </svg>
                         </button>
                     </div>
+                    {filterIndex && <div id="filterIndex"><Filterindex /></div>}
                     <div>
                         <ProductCard />
                         <ProductCard />
@@ -49,3 +66,6 @@ export default function page() {
         </div>
     )
 }
+
+
+

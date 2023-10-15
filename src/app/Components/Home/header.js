@@ -22,7 +22,7 @@ export default function Header() {
             <div >
                 <Image className="" src={bertertext} alt="Barter text image" />
             </div>
-            <div id="berterlogo" className="sm:mt-[-100px]">
+            <div id="berterlogo" className="sm:mt-[-100px] ">
                 <Image className="sm:w-56 sm:mt-[-4rem]" src={berterLogo} alt="Berter Logo" /> {/* Specify width and height for the Image component */}
             </div>
         </div>

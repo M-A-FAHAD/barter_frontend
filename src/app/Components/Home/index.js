@@ -19,7 +19,7 @@ export default function Homepage() {
     return (
         <div >
             <header>
-                <div><Navbar /></div>
+                <div ><Navbar /></div>
                 <div><Header /></div>
                 <div><Searchbar /></div>
             </header>

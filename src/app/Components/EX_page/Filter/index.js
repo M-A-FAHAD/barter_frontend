@@ -4,7 +4,7 @@ import CategoryDropdown from "./catagoryDropdown"
 import locationIco from '../../../../../public/Icons/placeholder.png'
 import Price from "./price"
 import Filterby from "./filterby"
-export default function Filter() {
+export default function Filterindex() {
     return (
         <div className="w-full p-4 flex flex-col  items-center">
             <div className="shadow flex justify-center items-center bg-gray-300 w-full h-10 rounded cursor-pointer hover:bg-gray-200">
