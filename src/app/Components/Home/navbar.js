@@ -58,7 +58,7 @@ const Navbar = () => {
                 </div>
                 <div id="right-nav" className={opacityClass}>
                     <ul className={`flex  ml-[-15px] pl-[20px] sm:block sm:pr-[10px]`}>
-                        <li id="navFour" className={NavComCss}>Products</li>
+                        <Link href={'/ex'}><li id="navFour" className={NavComCss}>Exchange</li></Link>
                         <li id="navFive" className={NavComCss}>Blog</li>
                         <li id="navSix" className={NavComCss}>Contact Us</li>
                     </ul>

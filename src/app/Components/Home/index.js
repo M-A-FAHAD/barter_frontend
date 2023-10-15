@@ -4,13 +4,14 @@ import Searchbar from "./searchbar"
 import Browseitems from "./browseitems"
 import About from "./about"
 import Navbar from "./navbar"
+import Endline from "./endline"
 import { useSelector } from "react-redux"
 
 
 //signup and login features
 import Login from "./Logs/login"
 import Signup from "./Logs/signup"
-const logscss = "absolute w-[100vw] h-[100vh] top-0 left-0 backdrop-blur-sm  absolute  z-50"
+const logscss = "absolute w-[100vw] h-[100vh] bottom-0 backdrop-blur-sm  absolute  z-50"
 
 export default function Homepage() {
     const loginState = useSelector(state => state.loginState)
@@ -35,7 +36,9 @@ export default function Homepage() {
                 </div>
             </section>
             <footer>
-
+                <div>
+                    <Endline />
+                </div>
 
             </footer>
         </div>
