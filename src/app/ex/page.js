@@ -11,11 +11,18 @@ import { gsap } from "gsap"
 export default function page() {
     //location sellectior state
     const locationSelector = useSelector(state => state.locationSellectorState)
-    if (locationSelector === 'hidden') {
-        document.body.style.overflow = "auto";
-    } else {
-        document.body.style.overflow = "hidden";
-    }
+    // const freezescreen = () => {
+    //     document.body.style.overflow = "hidden";
+    // }
+    // const unfreezescreen = () => {
+    //     document.body.style.overflow = "auto";
+    // }
+    // if (locationSelector === 'hidden') {
+    //     unfreezescreen()
+    // } else {
+    //     freezescreen()
+    // }
+
     const [filterIndex, setFilterIndex] = useState(false)
     const filterVisiblity = () => {
         filterIndex ? setFilterIndex(false) : setFilterIndex(true)
