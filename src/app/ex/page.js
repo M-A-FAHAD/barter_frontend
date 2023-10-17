@@ -6,23 +6,24 @@ import ProductCard from "../Components/EX_page/Product/productCard"
 import PageNavigator from "../Components/EX_page/Product/pageNavigator"
 import LocationSellector from "../Components/EX_page/Filter/locationSellector"
 import { useSelector } from "react-redux"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { gsap } from "gsap"
 export default function page() {
     //location sellectior state
     const locationSelector = useSelector(state => state.locationSellectorState)
-    // const freezescreen = () => {
-    //     document.body.style.overflow = "hidden";
-    // }
-    // const unfreezescreen = () => {
-    //     document.body.style.overflow = "auto";
-    // }
-    // if (locationSelector === 'hidden') {
-    //     unfreezescreen()
-    // } else {
-    //     freezescreen()
-    // }
-
+    const freezescreen = () => {
+        document.body.style.overflow = "hidden";
+    }
+    const unfreezescreen = () => {
+        document.body.style.overflow = "auto";
+    }
+    useEffect(() => {
+        if (locationSelector === 'hidden') {
+            unfreezescreen()
+        } else {
+            freezescreen()
+        }
+    }, [locationSelector])
     const [filterIndex, setFilterIndex] = useState(false)
     const filterVisiblity = () => {
         filterIndex ? setFilterIndex(false) : setFilterIndex(true)

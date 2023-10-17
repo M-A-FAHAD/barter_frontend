@@ -11,6 +11,12 @@ export default function LocationSellector() {
     const [sylhet, setSylhet] = useState(false)
     const [borishal, setBorishal] = useState(false)
     const [rangpur, setRangpur] = useState(false)
+    const freezescreen = () => {
+        document.body.style.overflow = "hidden";
+    }
+    const unfreezescreen = () => {
+        document.body.style.overflow = "auto";
+    }
     const show = (id) => {
         gsap.to(`#${id} p`, {
             rotate: 90
@@ -93,6 +99,7 @@ export default function LocationSellector() {
     const locationSellector = (state) => {
         dispatch(locationSelectorVisibility(state))
     }
+
     //stylings
     const divitionMaindiv = `overflow-hidden`
     const divitionsStyle = `list-none  pt-4 pb-4 pr-4 cursor-pointer flex justify-between shadow bg-yellow-100 relative pl-2 rounded z-20`
