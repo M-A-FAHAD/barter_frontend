@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-const Navbar = () => {
+const HomeNavbar = () => {
     // Use a boolean state variable instead of a numeric one for 'click'
     const [click, setClick] = useState(false);
 
@@ -59,8 +59,8 @@ const Navbar = () => {
                 <div id="right-nav" className={opacityClass}>
                     <ul className={`flex  ml-[-15px] pl-[20px] sm:block sm:pr-[10px]`}>
                         <Link href={'/ex'}><li id="navFour" className={NavComCss}>Exchange</li></Link>
-                        <li id="navFive" className={NavComCss}>Blog</li>
-                        <li id="navSix" className={NavComCss}>Contact Us</li>
+                        <Link href={'/profile'}><li id="navFive" className={NavComCss}>Profile</li></Link>
+                        <li id="navSix" className={NavComCss}>Help</li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default HomeNavbar;
 
 
 

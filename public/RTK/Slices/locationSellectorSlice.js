@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const locationSelectorSlice = createSlice({
+const locationSelectorSlice = createSlice({
     name: 'locationSellectorSlice',
     initialState: 'hidden',
     reducers: {

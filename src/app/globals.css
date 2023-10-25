@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* This css use for hide scrollbar */
+.scrollbar-hidden::-webkit-scrollbar{
+    display: none;
+}

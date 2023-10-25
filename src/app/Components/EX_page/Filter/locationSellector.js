@@ -1,104 +1,118 @@
 'use client'
-import { useState } from "react";
+import React, { useState } from "react";
 import { gsap } from "gsap";
 import { useDispatch } from "react-redux";
 import { locationSelectorVisibility } from "../../../../../public/RTK/Slices/locationSellectorSlice";
-export default function LocationSellector() {
-    const [dhaka, setDhaka] = useState(false)
-    const [chottogram, setChottogram] = useState(false)
-    const [rajshahi, setRajshahi] = useState(false)
-    const [khulna, setKhulna] = useState(false)
-    const [sylhet, setSylhet] = useState(false)
-    const [borishal, setBorishal] = useState(false)
-    const [rangpur, setRangpur] = useState(false)
-    const freezescreen = () => {
-        document.body.style.overflow = "hidden";
-    }
-    const unfreezescreen = () => {
-        document.body.style.overflow = "auto";
-    }
+
+export default function LocationSelector() {
+    // State for each division's visibility
+    const [dhaka, setDhaka] = useState(false);
+    const [chottogram, setChottogram] = useState(false);
+    const [rajshahi, setRajshahi] = useState(false);
+    const [khulna, setKhulna] = useState(false);
+    const [sylhet, setSylhet] = useState(false);
+    const [borishal, setBorishal] = useState(false);
+    const [rangpur, setRangpur] = useState(false);
+
+    // Function to show division details
     const show = (id) => {
         gsap.to(`#${id} p`, {
-            rotate: 90
-        })
+            rotate: 90,
+        });
         gsap.to(`#${id}HiddenDiv`, {
             y: 0,
-            height: 250
-        })
+            height: 250,
+        });
     };
+
+    // Function to hide division details
     const hide = (id) => {
         gsap.to(`#${id} p`, {
-            rotate: 0
-        })
+            rotate: 0,
+        });
         gsap.to(`#${id}HiddenDiv`, {
             y: -250,
-            height: 0
-        })
-    }
+            height: 0,
+        });
+    };
+
+    // Function to toggle visibility of division details
     const toggleHiddenDiv = (id) => {
-        if (id === 'dhaka') {
-            if (dhaka === false) {
-                show(id)
-                setDhaka(true)
-            } else {
-                hide(id)
-                setDhaka(false)
-            }
-        } else if (id === 'chottogram') {
-            if (chottogram === false) {
-                show(id)
-                setChottogram(true)
-            } else {
-                hide(id)
-                setChottogram(false)
-            }
-        } else if (id === "rajshahi") {
-            if (rajshahi === false) {
-                show(id)
-                setRajshahi(true)
-            } else {
-                hide(id)
-                setRajshahi(false)
-            }
-        } else if (id === 'khulna') {
-            if (khulna === false) {
-                show(id)
-                setKhulna(true)
-            } else {
-                hide(id)
-                setKhulna(false)
-            }
-        } else if (id === 'sylhet') {
-            if (sylhet === false) {
-                show(id)
-                setSylhet(true)
-            } else {
-                hide(id)
-                setSylhet(false)
-            }
-        } else if (id === 'borishal') {
-            if (borishal === false) {
-                show(id)
-                setBorishal(true)
-            } else {
-                hide(id)
-                setBorishal(false)
-            }
-        } else if (id === 'rangpur') {
-            if (rangpur === false) {
-                show(id)
-                setRangpur(true)
-            } else {
-                hide(id)
-                setRangpur(false)
-            }
+        switch (id) {
+            case 'dhaka':
+                if (dhaka === false) {
+                    show(id);
+                    setDhaka(true);
+                } else {
+                    hide(id);
+                    setDhaka(false);
+                }
+                break;
+            case 'chottogram':
+                if (chottogram === false) {
+                    show(id);
+                    setChottogram(true);
+                } else {
+                    hide(id);
+                    setChottogram(false);
+                }
+                break;
+            case 'rajshahi':
+                if (rajshahi === false) {
+                    show(id);
+                    setRajshahi(true);
+                } else {
+                    hide(id);
+                    setRajshahi(false);
+                }
+                break;
+            case 'khulna':
+                if (khulna === false) {
+                    show(id);
+                    setKhulna(true);
+                } else {
+                    hide(id);
+                    setKhulna(false);
+                }
+                break;
+            case 'sylhet':
+                if (sylhet === false) {
+                    show(id);
+                    setSylhet(true);
+                } else {
+                    hide(id);
+                    setSylhet(false);
+                }
+                break;
+            case 'borishal':
+                if (borishal === false) {
+                    show(id);
+                    setBorishal(true);
+                } else {
+                    hide(id);
+                    setBorishal(false);
+                }
+                break;
+            case 'rangpur':
+                if (rangpur === false) {
+                    show(id);
+                    setRangpur(true);
+                } else {
+                    hide(id);
+                    setRangpur(false);
+                }
+                break;
+            default:
+                break;
         }
-    }
-    //location sellector state defined
-    const dispatch = useDispatch()
+    };
+
+    // Redux dispatch to control location selector visibility
+    const dispatch = useDispatch();
     const locationSellector = (state) => {
-        dispatch(locationSelectorVisibility(state))
-    }
+        dispatch(locationSelectorVisibility(state));
+    };
+
 
     //stylings
     const divitionMaindiv = `overflow-hidden`
@@ -106,7 +120,7 @@ export default function LocationSellector() {
     const hiddenListDivStyle = `list-none pl-10  translate-y-[-15rem] h-0`
     const hiddenListStyle = `p-2 hover cursor-pointer hover:bg-yellow-200 h-10 rounded  `
     return (
-        <div className="w-[40rem] h-[80vh] sm:h-[100vh] bg-yellow-100 shadow p-4 overflow-auto ">
+        <div className="w-[40rem] h-[80vh] sm:h-[100vh] bg-yellow-100 shadow p-4 overflow-auto scrollbar-hidden">
             <div>
                 <div className="flex justify-between">
                     <div>

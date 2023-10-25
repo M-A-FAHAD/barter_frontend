@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-export const SigninSlice = createSlice({
+const SigninSlice = createSlice({
     name: 'signinSlice',
     initialState: 'hidden',
     reducers: {

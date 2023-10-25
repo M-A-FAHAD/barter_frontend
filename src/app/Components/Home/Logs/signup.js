@@ -33,16 +33,19 @@ export default function Signup() {
                             type="text"
                             class="border rounded-lg p-2 mb-3 w-full"
                             placeholder="Name"
+                            required
                         />
                         <input
                             type="email"
                             class="border rounded-lg p-2 mb-3 w-full"
                             placeholder="Email"
+                            required
                         />
                         <input
                             type="password"
                             class="border rounded-lg p-2 mb-3 w-full"
                             placeholder="Password"
+                            required
                         />
                         <button
                             class="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"

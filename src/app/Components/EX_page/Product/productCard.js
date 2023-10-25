@@ -1,9 +1,16 @@
 import Image from "next/image"
 //dummy prhoto
 import dummy from '../../../../../public/Icons/car.png'
+import { useDispatch } from "react-redux"
+import { spacificProductsVisibility } from "../../../../../public/RTK/Slices/spacificProductSlice"
+
 export default function ProductCard() {
+    const dispatch = useDispatch()
+    const spacificProductCardVisibility = (state) => {
+        dispatch(spacificProductsVisibility(state))
+    }
     return (
-        <div className="w-[95%] flex p-2 border m-4 shadow">
+        <div onClick={() => { spacificProductCardVisibility('block') }} className="w-[95%] flex p-2 border m-4 shadow hover:scale-105 transition-transform ease duration-200 cursor-zoom-in">
             <div>
                 <Image className="w-32 h-32 bg-gray-500" src={dummy} />
             </div>

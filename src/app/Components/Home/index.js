@@ -3,7 +3,7 @@ import Header from "./header"
 import Searchbar from "./searchbar"
 import Browseitems from "./browseitems"
 import About from "./about"
-import Navbar from "./navbar"
+import HomeNavbar from "../Navbar/homeNavbar"
 import Endline from "./endline"
 import { useSelector } from "react-redux"
 
@@ -19,7 +19,7 @@ export default function Homepage() {
     return (
         <div >
             <header>
-                <div ><Navbar /></div>
+                <div ><HomeNavbar /></div>
                 <div><Header /></div>
                 <div><Searchbar /></div>
             </header>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 //Import images form public folder
 //first row
@@ -21,7 +22,7 @@ import agricultureImg from '../../../../public/Icons/agriculture.png'
 import serviceImg from '../../../../public/Icons/customer-service.png'
 import jobsImg from '../../../../public/Icons/job.png'
 import overseasjobs from '../../../../public/Icons/remotejob.png'
-
+import Link from 'next/link'
 
 //styles section
 const rows = `flex `
@@ -32,12 +33,18 @@ const textDiv = `pl-2`
 const textOne = `text-[15px] font-bold w-[3rem]`
 const textTwo = `opacity-[0.5]`
 export default function Browseitems() {
+    //This functions use for navigation
+    const router = useRouter()
+    const navigateEx = () => {
+        router.push('/ex')
+    }
+
     return (
         <div className='w-full flex justify-center pt-2 pb-2'>
             <div className='sm:flex overflow-x-auto'>
                 {/* first row */}
                 <div className={rows}>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={mobailesImg} />
                         </div>
@@ -46,7 +53,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={electronicsImg} />
                         </div>
@@ -55,7 +62,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={vehiclesImg} />
                         </div>
@@ -64,7 +71,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={homeaplincesImg} />
                         </div>
@@ -76,7 +83,7 @@ export default function Browseitems() {
                 </div>
                 {/* second row */}
                 <div className={rows}>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={petImg} />
                         </div>
@@ -85,7 +92,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={propertyImg} />
                         </div>
@@ -94,7 +101,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={womenclothImg} />
                         </div>
@@ -103,7 +110,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={menclothImg} />
                         </div>
@@ -115,7 +122,7 @@ export default function Browseitems() {
                 </div>
                 {/* third row */}
                 <div className={rows}>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={sportImg} />
                         </div>
@@ -124,7 +131,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={busnessImg} />
                         </div>
@@ -133,7 +140,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={essentialsImg} />
                         </div>
@@ -142,7 +149,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={educationImg} />
                         </div>
@@ -154,7 +161,7 @@ export default function Browseitems() {
                 </div>
                 {/* frourth row */}
                 <div className={rows}>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={agricultureImg} />
                         </div>
@@ -163,7 +170,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={serviceImg} />
                         </div>
@@ -172,7 +179,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={jobsImg} />
                         </div>
@@ -181,7 +188,7 @@ export default function Browseitems() {
                             <p className={textTwo}>999 ads</p>
                         </div>
                     </div>
-                    <div className={boxes}>
+                    <div onClick={navigateEx} className={boxes}>
                         <div className={imgDiv}>
                             <Image className={imges} src={overseasjobs} />
                         </div>
@@ -196,5 +203,4 @@ export default function Browseitems() {
     )
 }
 
-import React from 'react'
 
