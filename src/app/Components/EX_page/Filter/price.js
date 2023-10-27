@@ -27,14 +27,14 @@ export default function Price() {
                     placeholder="Min Price"
                     value={minPrice}
                     onChange={handleMinPriceChange}
-                    className="border rounded p-1 m-1"
-                />
+                    className="border rounded p-1 m-1 "
+                /><br />
                 <input
                     type="number"
                     placeholder="Max Price"
                     value={maxPrice}
                     onChange={handleMaxPriceChange}
-                    className="border rounded p-1 m-1"
+                    className="border rounded p-1 m-1 "
                 />
 
             </div>

@@ -3,8 +3,8 @@ import dummyIMG from '../../../../../public/Icons/dummy.png'
 import galaryIMG from '../../../../../public/Icons/galary.png'
 export default function Chats() {
     return (
-        <div className="flex w-full h-full rounded overflow-hidden border shadow-xl">
-            <div className=" w-[60%] ">
+        <div className="flex md:block w-full h-full rounded overflow-hidden border shadow-xl">
+            <div className=" w-[60%] md:w-full">
                 <div className="bg-green-300 h-[32px] p-1 flex items-center">
                     <Image className="w-6 rounded-full" src={dummyIMG} />
                     <h3 className="text-sm font-bold text-gray-700 pl-2">Mishal Ahamed FAHAD</h3>
@@ -26,7 +26,7 @@ export default function Chats() {
             </div>
 
 
-            <div className=" w-[40%] h-full overflow-x-auto scrollbar-hidden p-2 pt-0 border-l">
+            <div className=" w-[40%] md:w-full md:pt-4 h-full overflow-x-auto scrollbar-hidden p-2 pt-0 border-l">
                 <h2 className="text-center border-b pb-2 relative sticky top-0  bg-gray-100 w-[110%] ml-[-10px] font-bold bg-green-300">My Chats</h2>
 
                 <div className="w-full h-[50px] rounded shadow border overflow-hidden flex items-center pl-1 mt-2">

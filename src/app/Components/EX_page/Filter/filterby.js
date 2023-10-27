@@ -19,7 +19,7 @@ export default function Filterby() {
     };
 
     return (
-        <div className="border p-4 mt-4 rounded shadow w-[15rem]">
+        <div className="border p-4 mt-4 rounded shadow w-[15rem] md:w-[100vw] ">
             <label htmlFor="order-selector" className="block text-sm font-medium text-gray-700">
                 Select Order:
             </label>

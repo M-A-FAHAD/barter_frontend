@@ -10,7 +10,7 @@ import Condition from '../../../../../public/Icons/box.png'
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { spacificProductsVisibility } from "../../../../../public/RTK/Slices/spacificProductSlice"
-export default function SpacificProductCard({ color }) {
+export default function SpacificProductCard() {
     const [description, setDescription] = useState(0)
     const toggleDescription = () => {
         if (description === 0) {
@@ -28,7 +28,7 @@ export default function SpacificProductCard({ color }) {
         dispatch(spacificProductsVisibility(state))
     }
     return (
-        <div className="h-auto w-[40rem] bg-gray-100 shadow-2xl p-4 ">
+        <div className="h-auto w-[40rem] bg-gray-100 shadow-2xl md:shadow-none p-4 ">
             <div className="pb-2">
                 <div className="flex justify-between">
                     <h2 className="font-bold text-2xl">This is our product title that put form product owner</h2>

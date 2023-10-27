@@ -2,8 +2,11 @@
 import Image from "next/image";
 import dummyIMG from '../../../public/Icons/ball-sport.png'
 import { useState } from "react";
+import Link from "next/link";
+import gsap from "gsap";
+//import images
+import barterLogo from '../../../public/Icons/barterlogo.png'
 //Import external components
-import ProfileNavbar from "../Components/Navbar/profileNavbar";
 import Chats from "../Components/Profile/Chats/chats";
 export default function Profile() {
     //This is component hide and show logics
@@ -36,10 +39,49 @@ export default function Profile() {
         setDisplayProfile(false)
         setEditProfile(true)
     };
+    //this is small screen sellection visibility section
+    const [smSellectionVisibility, setSmSellectionVisibility] = useState(false)
+    const smallScreenSellection = () => {
+        setSmSellectionVisibility(!smSellectionVisibility)
+        if (smSellectionVisibility === false) {
+            gsap.to('#small_screen_sellection', { marginTop: 6, ease: 'bounce' })
+        } else {
+            gsap.to('#small_screen_sellection', { marginTop: '-170px' })
+        }
+    }
     return (
         <div className="w-full h-screen flex flex-col justify-center items-center">
-            <div><ProfileNavbar /></div>
-            <div className="w-[50rem] h-[30rem] bg-gray-100 flex sm:relative sm:top-0 sm:left-0 sm:w-full sm:h-screen">
+            <div className="w-[50rem] h-[30rem] bg-gray-100 flex md:block lg:w-full md:h-full">
+                <div className="hidden md:block">
+                    <div className="w-full h-12 p-1  flex justify-between bg-gray-600 relative z-10">
+                        <Link href={'/'}>
+                            <div className="cursor-pointer hover:shadow-white rounded-full">
+                                <Image className="w-10 " src={barterLogo} />
+                            </div>
+                        </Link>
+                        <div onClick={smallScreenSellection} className="w-8 h-8 cursor-pointer hover:shadow-white  flex flex-col justify-center items-center mr-2 mt-1">
+                            <div className="bg-white w-6 h-1 rounded-full m-[2px]"></div>
+                            <div className="bg-white w-6 h-1 rounded-full m-[2px]"></div>
+                            <div className="bg-white w-6 h-1 rounded-full m-[2px]"></div>
+                        </div>
+                    </div>
+                    <div id="small_screen_sellection" className="w-32 shadow absolute right-0 mr-10 bg-yellow-100 rounded h-40 mt-[-170px]">
+                        <div onClick={showProfile} className="m-1 border rounded hover:bg-gray-200 cursor-pointer flex justify-between shadow-xl hover:scale-105 transition-transform ease duration-100 " >
+                            <p className="text-lg text-gray-400 hover:text-black font-bold p-1">Profile</p>
+                        </div>
+                        <div onClick={showPosts} className="m-1 border rounded hover:bg-gray-200 cursor-pointer flex justify-between shadow-xl hover:scale-105 transition-transform ease duration-100  items-center" >
+                            <p className="text-lg text-gray-400 hover:text-black font-bold p-1">Posts</p>
+                        </div>
+                        <div onClick={showChats} className="m-1 border rounded hover:bg-gray-200 cursor-pointer flex justify-between shadow-xl hover:scale-105 transition-transform ease duration-100 ">
+                            <p className="text-lg text-gray-400 hover:text-black font-bold p-1">Chats</p>
+                        </div>
+                        <div onClick={smallScreenSellection} className="w-full flex justify-center cursor-pointer border-b pt-3">
+                            <svg id="description-errow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
+                                <path d="M10 50 L50 10 L90 50" fill="none" stroke="#000" stroke-width="5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 <div className="p-4 border-r w-[35%] md:hidden">
                     <div onClick={showProfile} className="m-1 border rounded hover:bg-gray-200 cursor-pointer flex justify-between shadow-xl hover:scale-105 transition-transform ease duration-100 " >
                         <p className="text-2xl font-bold p-2">Profile</p>
