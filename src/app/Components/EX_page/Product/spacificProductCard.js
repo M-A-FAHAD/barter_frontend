@@ -28,7 +28,7 @@ export default function SpacificProductCard() {
         dispatch(spacificProductsVisibility(state))
     }
     return (
-        <div className="h-auto w-[40rem] bg-gray-100 shadow-2xl md:shadow-none p-4 ">
+        <div className="h-auto w-[40rem] bg-gray-100 shadow-2xl md:shadow-none p-4 sm:w-full sm:h-full ">
             <div className="pb-2">
                 <div className="flex justify-between">
                     <h2 className="font-bold text-2xl">This is our product title that put form product owner</h2>
@@ -72,7 +72,7 @@ export default function SpacificProductCard() {
             </div>
             <div className="mt-1">
                 <h4 className="font-bold vsm:ml-4">Description</h4>
-                <p id="description" className={`p-4 overflow-hidden transition-transform ease-in-out duration-500 transform h-16`}>
+                <p id="description" className={`p-4 overflow-hidden transition-transform ease-in-out duration-500 transform h-16 bg-white`}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, praesentium fugit voluptatibus debitis illo minus. Sunt animi facere impedit itaque in esse neque tempore placeat blanditiis, delectus, nobis voluptate, error pariatur alias laborum illum porro totam quasi necessitatibus voluptates sed? Consectetur nihil tempore maiores aperiam architecto reprehenderit cum nostrum numquam.
                 </p>
                 <hr className="shadow" />

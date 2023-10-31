@@ -99,7 +99,7 @@ export default function Page() {
 
                             {/* Small screen filter options */}
                             {/* {filterIndex && <div id="filterIndex"><Filterindex /></div>} */}
-                            <div id="filterIndex" className="mt-[-600px] ">
+                            <div id="filterIndex" className="mt-[-600px] min-md:hidden">
                                 <Filterindex />
                                 <div onClick={toggleFilterVisibility} className="w-full flex justify-center cursor-pointer hover:bg-gray-200 border-b shadow">
                                     <svg id="description-errow" className={`m-2`} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">

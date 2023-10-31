@@ -51,7 +51,7 @@ export default function Profile() {
     }
     return (
         <div className="w-full h-screen flex flex-col justify-center items-center">
-            <div className="w-[50rem] h-[30rem] bg-gray-100 flex md:block lg:w-full md:h-full">
+            <div className="w-[50rem] h-[30rem] bg-gray-100 md:bg-white flex md:block lg:w-full md:h-full">
                 <div className="hidden md:block">
                     <div className="w-full h-12 p-1  flex justify-between bg-gray-600 relative z-10">
                         <Link href={'/'}>

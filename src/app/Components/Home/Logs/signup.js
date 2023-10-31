@@ -1,66 +1,104 @@
-import { useDispatch } from "react-redux"
-import { signinVisibility } from "../../../../../public/RTK/Slices/signinSlice"
-import { loginVisibility } from "../../../../../public/RTK/Slices/loginSlice"
-
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signinVisibility } from "../../../../../public/RTK/Slices/signinSlice";
+import { loginVisibility } from "../../../../../public/RTK/Slices/loginSlice";
 
 export default function Signup() {
+    const dispatch = useDispatch();
+
     const freezescreen = () => {
         document.body.style.overflow = "hidden";
-    }
+    };
+
     const unfreezescreen = () => {
         document.body.style.overflow = "auto";
-    }
-    const dispatch = useDispatch()
+    };
+
     const setsigninVisibility = (payload) => {
-        dispatch(signinVisibility(payload))
-    }
+        dispatch(signinVisibility(payload));
+    };
+
     const setloginVisibility = (payload) => {
-        dispatch(loginVisibility(payload))
-    }
+        dispatch(loginVisibility(payload));
+    };
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const signupData = {
+        name: name,
+        email: email,
+        password: password,
+    };
+
+    const signupApi = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("https://barter-backend.vercel.app/user/signup", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(signupData),
+            });
+
+            const jsonRes = await res.json();
+            console.log(jsonRes);
+
+            // Handle the API response here, e.g., show a success message or handle errors
+        } catch (error) {
+            console.error(error);
+
+            // Handle any API request errors
+        }
+    };
+
     return (
         <div>
-            <div class="flex justify-center items-center h-screen">
-                <div class="w-80 bg-white p-8 rounded-lg shadow-lg">
-                    <div onClick={() => { setsigninVisibility('hidden'), unfreezescreen() }} className="absolute ml-[15rem] mt-[-15px] bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex justify-center items-center text-teal-500 cursor-pointer">
+            <div className="flex justify-center items-center h-screen">
+                <div className="w-80 bg-white p-8 rounded-lg shadow-lg">
+                    <div onClick={() => { setsigninVisibility('hidden'); unfreezescreen(); }} className="absolute ml-[15rem] mt-[-15px] bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex justify-center items-center text-teal-500 cursor-pointer">
                         X
                     </div>
-                    <p class="text-2xl font-semibold mb-4">Create account</p>
-                    <p class="text-xs text-gray-500 mb-2">
-                        Let's get started with a barter economoy
+                    <p className="text-2xl font-semibold mb-4">Create account</p>
+                    <p className="text-xs text-gray-500 mb-2">
+                        Let's get started with a barter economy
                     </p>
-                    <form class="mb-4">
+                    <form className="mb-4" onSubmit={signupApi}>
                         <input
                             type="text"
-                            class="border rounded-lg p-2 mb-3 w-full"
+                            className="border rounded-lg p-2 mb-3 w-full"
                             placeholder="Name"
                             required
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <input
                             type="email"
-                            class="border rounded-lg p-2 mb-3 w-full"
+                            className="border rounded-lg p-2 mb-3 w-full"
                             placeholder="Email"
                             required
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <input
                             type="password"
-                            class="border rounded-lg p-2 mb-3 w-full"
+                            className="border rounded-lg p-2 mb-3 w-full"
                             placeholder="Password"
                             required
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <button
-                            class="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
+                            className="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
                         >
                             Create account
                         </button>
                     </form>
-                    <p class="text-xs text-gray-600">
+                    <p className="text-xs text-gray-600">
                         Already have an account?
-                        <span onClick={() => { setloginVisibility('block'), setsigninVisibility('hidden'), freezescreen() }} class="text-teal-500 font-semibold ml-1 hover:text-blue-500 cursor-pointer">Log in</span>
+                        <span onClick={() => { setloginVisibility('block'); setsigninVisibility('hidden'); freezescreen(); }} className="text-teal-500 font-semibold ml-1 hover:text-blue-500 cursor-pointer">Log in</span>
                     </p>
-                    <div class="mt-6">
-                        <div
-                            class="bg-white hover:bg-gray-100 cursor-pointer border border-gray-400 py-2 px-4 rounded-lg flex items-center"
-                        >
+                    <div className="mt-6">
+                        <div className="bg-white hover:bg-gray-100 cursor-pointer border border-gray-400 py-2 px-4 rounded-lg flex items-center">
                             <svg
                                 class="text-gray-400 h-5 w-5 mr-2"
                                 fill="none"
@@ -91,7 +129,6 @@ export default function Signup() {
                     </div>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
