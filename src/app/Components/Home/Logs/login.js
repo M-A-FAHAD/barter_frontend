@@ -33,7 +33,7 @@ export default function Login() {
     const loginApi = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("http://localhost:6001/user/login", {
+            const res = await fetch("https://barter-backend.vercel.app/user/login", {
                 method: "POST", // Use "method" instead of "type"
                 headers: {
                     'Content-Type': 'application/json',
