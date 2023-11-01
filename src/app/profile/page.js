@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import dummyIMG from '../../../public/Icons/ball-sport.png'
+import dummyIMG from '../../../public/Icons/dummy.png'
 import { useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
@@ -47,6 +47,17 @@ export default function Profile() {
             gsap.to('#small_screen_sellection', { marginTop: 6, ease: 'bounce' })
         } else {
             gsap.to('#small_screen_sellection', { marginTop: '-170px' })
+        }
+    }
+    //profile image sellectin and setup
+    const [image, setImage] = useState(dummyIMG)
+    console.log(image)
+    const setImidietProfileImage = (e) => {
+        const file = e.target.files[0]
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+            setImage(reader.result)
         }
     }
     return (
@@ -119,8 +130,7 @@ export default function Profile() {
                                     <section className="pt-4">
                                         <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Name: <span className="text-blue-400">Mishal Ahamed FAHAD</span></h3>
                                         <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Emai: <span className="text-blue-400">mishalahamedfahad@gmail.com</span></h3>
-                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Phone: <span className="text-blue-400">01771477206</span></h3>
-                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Location: <span className="text-blue-400">Comilla...</span></h3>
+                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Password: <span className="text-blue-400">*******</span></h3>
                                         <button onClick={showEditProfile} className="bg-blue-600 hover:bg-blue-500 text-white p-2 border rounded-full ml-4 mt-2">Edit Profile</button>
                                     </section>
                                 </div>
@@ -132,9 +142,9 @@ export default function Profile() {
                                         <h1 className='text-2xl font-bold'>Edit your profile</h1>
                                         <hr />
                                         <section className="flex flex-col ml-4 sm:ml-0 sm:mt-4 ">
-                                            <Image className="w-20 h-20 rounded-full border-4 border-black" src={dummyIMG} />
+                                            <Image width={0} height={0} className="w-20 h-20 rounded-full border" src={image} />
                                             <label for="fileInput" className="w-20 bg-blue-600 hover:bg-blue-500 text-white flex justify-center rounded p-1 mt-2 cursor-pointer">Edit</label>
-                                            <input type="file" id="fileInput" name="file" accept="image/*" className="hidden"></input>
+                                            <input onChange={setImidietProfileImage} type="file" id="fileInput" name="file" accept="image/*" className="hidden"></input>
                                         </section>
                                     </div>
                                     <div className="mt-[-50px] sm:mt-0 sm:mt-4">
@@ -142,10 +152,8 @@ export default function Profile() {
                                         <input name="edit-Name" className="mb-4 rounded shadow outline-none p-1 pl-2" type="text" /><br />
                                         <leble className="font-bold" for="edit-Email">Edit your Email</leble><br />
                                         <input name="edit-Email" className="mb-4 rounded shadow outline-none p-1 pl-2" type="text" /><br />
-                                        <leble className="font-bold" for="edit-Number">Edit Number</leble><br />
-                                        <input name="edit-Number" className="mb-4 rounded shadow outline-none p-1 pl-2" type="number" /><br />
-                                        <leble className="font-bold">Edit Your Adress</leble><br />
-                                        <input className="mb-4 rounded shadow outline-none p-1 pl-2" type="text" /><br />
+                                        <leble className="font-bold" for="edit-Number">Edit Password</leble><br />
+                                        <input name="edit-Number" className="mb-4 rounded shadow outline-none p-1 pl-2" type="password" /><br />
                                         <button onClick={showDisplayProfile} className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded w-20">Save</button>
                                     </div>
                                 </div>

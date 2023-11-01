@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'; // Import useDispatch
 import { loginVisibility } from "../../../../../public/RTK/Slices/loginSlice";
@@ -32,10 +33,11 @@ export default function Login() {
     const loginApi = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("https://barter-backend.vercel.app/user/login", {
+            const res = await fetch("http://localhost:6001/user/login", {
                 method: "POST", // Use "method" instead of "type"
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': '*/*'
                 },
                 body: JSON.stringify(logData),
             });

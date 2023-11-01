@@ -30,12 +30,13 @@ export default function Signup() {
         name: name,
         email: email,
         password: password,
+        profileImage: "dummy Image"
     };
 
     const signupApi = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("https://barter-backend.vercel.app/user/signup", {
+            const res = await fetch("http://localhost:6001/user/signup", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
