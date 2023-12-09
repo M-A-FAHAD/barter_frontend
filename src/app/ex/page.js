@@ -54,7 +54,7 @@ export default function Page() {
     }
 
     return (
-        <div>
+        <div className="gifbackground-coverImageTwo">
             <div className={`absolute w-full h-[100vh] z-20 flex justify-center items-center backdrop-blur-sm ${locationSelector}`}>
                 <LocationSellector />
             </div>
@@ -63,8 +63,8 @@ export default function Page() {
             </div>
 
             <div className="flex justify-center">
-                <div className="h-auto border mb-20 w-[50rem] rounded overflow-hidden shadow-2xl ">
-                    <div className="relative z-10"><ProfileNavbar /></div>
+                <div className="h-auto  mb-20 w-[55rem] rounded overflow-hidden shadow-2xl border shadow shadow-gray-500 bg-white">
+                    <div className="sticky top-0 z-10"><ProfileNavbar /></div>
                     <div className="flex">
                         {/* Filter section */}
                         <div className="w-1/3 md:hidden">

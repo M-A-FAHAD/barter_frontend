@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'; // Import useDispatch
 import { loginVisibility } from "../../../../../public/RTK/Slices/loginSlice";
 import { signinVisibility } from "../../../../../public/RTK/Slices/signinSlice";
+import { authentication } from '../../../../../public/Scripts/authentication'
+import { gsap } from 'gsap';
 
+//This sollutino for testion pourpose
+import cookie from "js-cookie"
 export default function Login() {
     const dispatch = useDispatch();
 
@@ -29,11 +33,22 @@ export default function Login() {
         email: email,
         password: password,
     };
+    //login state defined
+    const [login, setLogin] = useState(false)
+    if (login) {
+        dispatch(loginVisibility('hidden'))
+    } else {
 
+    }
+    //login api call
+    const [loginBTN, setLoginBTN] = useState(true)
+    const [loginLoading, setLoginLoading] = useState(false)
     const loginApi = async (e) => {
         e.preventDefault();
+        setLoginLoading(true);
+        setLoginBTN(false)
         try {
-            const res = await fetch("https://barter-backend.vercel.app/user/login", {
+            const res = await fetch("http://localhost:6001/user/login", {
                 method: "POST", // Use "method" instead of "type"
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,14 +57,29 @@ export default function Login() {
                 body: JSON.stringify(logData),
             });
             const jsonRes = await res.json();
-            console.log(jsonRes);
+            if (jsonRes.success) {
+                setLogin(true)
+
+
+
+                //This sollution for testing pourpose i want to set it on cookies
+                cookie.set('token', jsonRes.token, { expires: 1 })
+
+                gsap.to("#loginIndicator", { marginTop: "-25px" })
+
+                //set authenticaton state 
+                authentication(dispatch)
+            } else {
+                gsap.to("#loginIndicator", { marginTop: 0 })
+                setLoginLoading(false);
+                setLoginBTN(true)
+            }
             // Handle the response, e.g., check for login success or display an error message
         } catch (error) {
-            console.error(error);
+            // console.log(error);
             // Handle any API request errors
         }
     };
-
     return (
         <div>
             <div className="flex justify-center items-center h-screen">
@@ -77,15 +107,27 @@ export default function Login() {
                         <input
                             onChange={(e) => setPassword(e.target.value)}
                             type="password"
-                            className="border rounded-lg p-2 mb-3 w-full"
+                            className="border rounded-lg p-2 mb-2 w-full relative z-10"
                             placeholder="Password"
                             required
                         />
-                        <button
-                            className="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
-                        >
-                            Log in
-                        </button>
+                        <p id='loginIndicator' className='text-xs text-red-500 mb-2 ml-1 mt-[-25px]'>Login failed.plz chack you email/password</p>
+                        {
+                            loginBTN &&
+                            <button
+                                className="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
+                            >
+                                Log in
+                            </button>
+                        }
+                        {loginLoading &&
+                            <button
+                                className="flex items-center bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 "
+                            >
+                                <div id='loginLoading' className='w-5 h-5 mr-1 rounded-full border-4  border-t-teal-500 animate-spin'></div>
+                                <div>please wait...</div>
+                            </button>
+                        }
                     </form>
                     <p className="text-xs text-gray-600">
                         Already have an account?

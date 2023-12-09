@@ -1,6 +1,3 @@
-////////////////////////////////////////
-////[Navbar use directily in layout.js]///
-////////////////////////////////////////
 'use client'
 // Import the necessary libraries at the top
 import { gsap } from "gsap";
@@ -49,7 +46,7 @@ const HomeNavbar = () => {
                 <div id="left-nav" className={opacityClass}>
                     <ul className={`flex mr-[-15px] pr-[20px] sm:block`}>
                         <Link href={'/'}><li id="navOne" className={NavComCss}>Home</li></Link>
-                        <Link href={'/about'}><li id="navTwo" className={NavComCss}>About Us</li></Link>
+                        <Link href={'/about'}><li id="navTwo" className={NavComCss}>About</li></Link>
                         <li id="navThree" className={NavComCss}>Service</li>
                     </ul>
                 </div>
@@ -60,7 +57,7 @@ const HomeNavbar = () => {
                     <ul className={`flex  ml-[-15px] pl-[20px] sm:block sm:pr-[10px]`}>
                         <Link href={'/ex'}><li id="navFour" className={NavComCss}>Exchange</li></Link>
                         <Link href={'/profile'}><li id="navFive" className={NavComCss}>Profile</li></Link>
-                        <li id="navSix" className={NavComCss}>Help</li>
+                        <Link href={'/profile/post'}><li id="navSix" className={NavComCss}>post add</li></Link>
                     </ul>
                 </div>
             </div>

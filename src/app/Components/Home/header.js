@@ -15,14 +15,12 @@ export default function Header() {
         logoAnime();
     }, [])
 
-
-
     return (
-        <div className="flex sm:flex-col justify-center items-center w-full h-[32rem] sm:h-[38rem] bg-gray-200 pl-[10%] pr-[10%] sm:mt-[-15rem]">
+        <div className="home-header-coverImage flex sm:flex-col justify-center items-center w-full h-[32rem] sm:h-[38rem]  pl-[10%] pr-[10%] sm:mt-[-15rem] bg-cover bg-center">
             <div >
                 <Image className="" src={bertertext} alt="Barter text image" />
             </div>
-            <div id="berterlogo" className="sm:mt-[-100px] ">
+            <div id="berterlogo" className="sm:mt-[-100px] min-sm:hidden">
                 <Image className="sm:w-56 sm:mt-[-4rem]" src={berterLogo} alt="Berter Logo" /> {/* Specify width and height for the Image component */}
             </div>
         </div>

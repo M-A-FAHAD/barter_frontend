@@ -6,3 +6,23 @@
 .scrollbar-hidden::-webkit-scrollbar{
     display: none;
 }
+.home-header-coverImage {
+    background: url('../../public/Icons/coverImg.jpg') no-repeat;
+    background-size: cover;
+}
+@media(max-width:640px){
+    .home-header-coverImage {
+        background: none;
+        background-size: cover;
+    }
+}
+.gifbackground-coverImage {
+    background: url('../../public//Images//gifs/gifbackgound.gif') no-repeat;
+    background-size: cover;
+    
+}
+.gifbackground-coverImageTwo {
+    background: url('../../public//Images//gifs/gifbackgroundtwo.gif') no-repeat;
+    background-size: cover;
+    
+}

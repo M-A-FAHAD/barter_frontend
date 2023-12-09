@@ -5,7 +5,9 @@ import Browseitems from "./browseitems"
 import About from "./about"
 import HomeNavbar from "../Navbar/homeNavbar"
 import Endline from "./endline"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { authentication } from '../../../../public/Scripts/authentication'
 
 
 //signup and login features
@@ -16,6 +18,9 @@ const logscss = "absolute w-[100vw] h-[100vh] bottom-0 backdrop-blur-sm  z-50"
 export default function Homepage() {
     const loginState = useSelector(state => state.loginState)
     const signinState = useSelector(state => state.signinState)
+    //This section for authencticate the user
+    const dispatch = useDispatch()
+    useEffect(() => { authentication(dispatch) }, [])
     return (
         <div >
             <header>

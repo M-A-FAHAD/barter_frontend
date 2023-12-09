@@ -1,6 +1,6 @@
 
-export default function about() {
+export default function page() {
     return (
-        <div>page</div>
+        <div>this is about us section</div>
     )
 }

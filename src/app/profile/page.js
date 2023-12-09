@@ -1,9 +1,12 @@
 'use client'
 import Image from "next/image";
 import dummyIMG from '../../../public/Icons/dummy.png'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
+import { useDispatch, useSelector } from "react-redux";
+import { authentication } from '../../../public/Scripts/authentication'
+
 //import images
 import barterLogo from '../../../public/Icons/barterlogo.png'
 //Import external components
@@ -49,19 +52,92 @@ export default function Profile() {
             gsap.to('#small_screen_sellection', { marginTop: '-170px' })
         }
     }
-    //profile image sellectin and setup
+    //user Information states
     const [image, setImage] = useState(dummyIMG)
-    console.log(image)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    //This is edit profile section
+    //profile image sellectin and setup
+    const [SellectedImage, setSellectedImage] = useState(dummyIMG)
     const setImidietProfileImage = (e) => {
         const file = e.target.files[0]
         const reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onload = () => {
-            setImage(reader.result)
+            setSellectedImage(reader.result)
         }
     }
+    const [uid, setUid] = useState('')
+    const [editName, setEditName] = useState('')
+    const [editEmail, setEditEmail] = useState('')
+    //This is profile passowrd section
+    const [oldPassword, setOldPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('')
+    const [repeteNewPassword, setRepeteNewPassword] = useState('')
+    //This is authentication section
+    const authenticationState = useSelector(state => state.authentication)
+    useEffect(() => {
+        if (authenticationState.user) {
+            setImage(authenticationState.user.profileImage)
+            setName(authenticationState.user.name)
+            setEmail(authenticationState.user.email)
+            //This is edit section
+            setUid(authenticationState.user.uid)
+            setSellectedImage(authenticationState.user.profileImage)
+            setEditName(authenticationState.user.name)
+            setEditEmail(authenticationState.user.email)
+        }
+    }, [authenticationState])
+
+
+    //Profile update loading animation state
+    const [profileUpdateLoading, setProfileUpdateLoading] = useState(false)
+    const [profileUpdateButton, setProfileUpdateButton] = useState(true)
+    const updateProfile = async () => {
+        setProfileUpdateLoading(true)
+        setProfileUpdateButton(false)
+        const userInputsForUpadateProfile = {
+            id: uid,
+            name: editName,
+            email: editEmail,
+            profileImage: SellectedImage,
+            password: oldPassword,
+            newpassword: newPassword
+        }
+        if (newPassword !== repeteNewPassword) {
+            gsap.to('#password_not_mach', { marginBottom: 0 })
+        } else {
+            try {
+                const res = await fetch('http://localhost:6001/user/updateprofile', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInputsForUpadateProfile)
+                })
+                const jsonRes = await res.json()
+                if (jsonRes.success) {
+                    setProfileUpdateLoading(false)
+                    setProfileUpdateButton(true)
+                    alert('Profile updated successfully')
+                } else {
+                    setProfileUpdateLoading(false)
+                    setProfileUpdateButton(true)
+                    alert('profile update failed please chack you password')
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+    }
+
+
+    //Thsi line for authentication
+    const dispatch = useDispatch()
+    useEffect(() => { authentication(dispatch) }, [])
     return (
-        <div className="w-full h-screen flex flex-col justify-center items-center">
+        <div className="w-full h-screen flex flex-col justify-center items-center gifbackground-coverImage ">
             <div className="w-[50rem] h-[30rem] bg-gray-100 md:bg-white flex md:block lg:w-full md:h-full">
                 <div className="hidden md:block">
                     <div className="w-full h-12 p-1  flex justify-between bg-gray-600 relative z-10">
@@ -125,11 +201,11 @@ export default function Profile() {
                                 displayProfile &&
                                 <div>
                                     <section>
-                                        <Image className="ml-4 w-20 h-20 rounded-full border-4 border-black" src={dummyIMG} />
+                                        <Image width={0} height={0} className="w-20 h-20 rounded-full border" src={image} />
                                     </section>
                                     <section className="pt-4">
-                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Name: <span className="text-blue-400">Mishal Ahamed FAHAD</span></h3>
-                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Emai: <span className="text-blue-400">mishalahamedfahad@gmail.com</span></h3>
+                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Name: <span className="text-blue-400">{name}</span></h3>
+                                        <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Emai: <span className="text-blue-400">{email}</span></h3>
                                         <h3 className="p-4 border m-1 rounded bg-yellow-100 font-bold">Password: <span className="text-blue-400">*******</span></h3>
                                         <button onClick={showEditProfile} className="bg-blue-600 hover:bg-blue-500 text-white p-2 border rounded-full ml-4 mt-2">Edit Profile</button>
                                     </section>
@@ -142,19 +218,71 @@ export default function Profile() {
                                         <h1 className='text-2xl font-bold'>Edit your profile</h1>
                                         <hr />
                                         <section className="flex flex-col ml-4 sm:ml-0 sm:mt-4 ">
-                                            <Image width={0} height={0} className="w-20 h-20 rounded-full border" src={image} />
+                                            <Image width={0} height={0} className="w-20 h-20 rounded-full border" src={SellectedImage} />
                                             <label for="fileInput" className="w-20 bg-blue-600 hover:bg-blue-500 text-white flex justify-center rounded p-1 mt-2 cursor-pointer">Edit</label>
                                             <input onChange={setImidietProfileImage} type="file" id="fileInput" name="file" accept="image/*" className="hidden"></input>
                                         </section>
                                     </div>
                                     <div className="mt-[-50px] sm:mt-0 sm:mt-4">
                                         <leble className="font-bold " for="edit-Name">Edit your Name</leble><br />
-                                        <input name="edit-Name" className="mb-4 rounded shadow outline-none p-1 pl-2" type="text" /><br />
+                                        <input
+                                            onChange={(e) => setEditName(e.target.value)}
+                                            name="edit-Name"
+                                            className="mb-4 rounded shadow outline-none p-1 pl-2"
+                                            type="text"
+                                            placeholder={editName}
+                                        />
+                                        <br />
                                         <leble className="font-bold" for="edit-Email">Edit your Email</leble><br />
-                                        <input name="edit-Email" className="mb-4 rounded shadow outline-none p-1 pl-2" type="text" /><br />
+                                        <input
+                                            onChange={(e) => setEditEmail(e.target.value)}
+                                            name="edit-Email"
+                                            className="mb-4 rounded shadow outline-none p-1 pl-2"
+                                            type="text"
+                                            placeholder={editEmail}
+                                        />
+                                        <br />
+                                        <leble className="font-bold" for="edit-Number">Enter Password</leble><br />
+                                        <input
+                                            onChange={(e) => setOldPassword(e.target.value)}
+                                            name="edit-Number"
+                                            className="mb-4 rounded shadow outline-none p-1 pl-2"
+                                            type="password"
+                                            placeholder="Enter old password"
+                                        />
+
+                                        <br />
+                                        <hr />
                                         <leble className="font-bold" for="edit-Number">Edit Password</leble><br />
-                                        <input name="edit-Number" className="mb-4 rounded shadow outline-none p-1 pl-2" type="password" /><br />
-                                        <button onClick={showDisplayProfile} className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded w-20">Save</button>
+                                        <p id="password_not_mach" className="text-xs pl-1 text-red-500 mb-[-15px]">password not matched</p>
+                                        <input
+                                            onChange={(e) => setNewPassword(e.target.value)}
+                                            name="new-passowrd"
+                                            className="mb-2 rounded shadow outline-none p-1 pl-2"
+                                            type="password" placeholder="Enter new passowrd"
+                                        />
+                                        <br />
+                                        <input
+                                            onChange={(e) => setRepeteNewPassword(e.target.value)}
+                                            name="repete-new-password"
+                                            className="mb-2 rounded shadow outline-none p-1 pl-2"
+                                            type="password"
+                                            placeholder="Repete new password"
+                                        />
+                                        <br />
+                                        {
+                                            profileUpdateButton &&
+                                            <button onClick={updateProfile} className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded w-20">Save</button>
+                                        }
+                                        {
+                                            profileUpdateLoading &&
+                                            <button
+                                                className="flex items-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-teal-600 "
+                                            >
+                                                <div id='loginLoading' className='w-5 h-5 mr-1 rounded-full border-4  border-t-teal-500 animate-spin'></div>
+                                                <div>please wait...</div>
+                                            </button>
+                                        }
                                     </div>
                                 </div>
                             }
@@ -162,7 +290,16 @@ export default function Profile() {
                     }
                     {posts &&
                         <div className="w-full">
-                            <div className=" h-28 p-2  rounded-md border flex shadow">
+                            <Link href={'/profile/post'}>
+                                <div className=" h-10 p-2  rounded-md border flex shadow mb-2 cursor-pointer bg-blue-100 hover:bg-blue-200 transition ease-in duration-100 flex justify-center items-center">
+                                    <h4 className="text-gray-600 font-bold text-3xl pr-2 ">Post Add</h4>
+                                    <div>
+                                        <div className="w-8 h-1 bg-gray-600 rounded-full absolute"></div>
+                                        <div className="w-8 h-1 bg-gray-600 rounded-full absolute rotate-90"></div>
+                                    </div>
+                                </div>
+                            </Link>
+                            <div className=" h-28 p-2  rounded-md border flex shadow mb-2">
                                 <Image className="w-24 border" src={dummyIMG} />
                                 <div className="pl-2">
                                     <h2 className="text-xl font-bold">This is Product Title</h2>

@@ -10,7 +10,7 @@ export default function ProductCard() {
         dispatch(spacificProductsVisibility(state))
     }
     return (
-        <div onClick={() => { spacificProductCardVisibility('block') }} className="w-[95%] flex p-2 border m-4 shadow hover:scale-105 transition-transform ease duration-200 cursor-zoom-in">
+        <div onClick={() => { spacificProductCardVisibility('block') }} className="w-[95%] flex p-2 border m-4 shadow hover:scale-105 transition-transform ease duration-200 cursor-zoom-in rounded bg-blue-100">
             <div>
                 <Image className="w-32 h-32 bg-gray-500" src={dummy} />
             </div>
