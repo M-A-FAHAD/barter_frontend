@@ -14,7 +14,7 @@ export async function middleware(req) {
             });
             const jsonRes = await res.json();
             if (jsonRes.authentication === true) {
-                //Authentication true
+                // Authentication true
                 console.log(jsonRes.authentication)
             } else {
                 //Authentication false
@@ -34,7 +34,7 @@ export async function middleware(req) {
 export const config = {
     matcher:
         [
-            // '/ex',
-            // '/profile/:path*',
+            '/ex',
+            '/profile/:path*',
         ],
 }
