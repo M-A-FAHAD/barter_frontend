@@ -40,7 +40,7 @@ export default function Signup() {
         setSignupLoading(true);
         setSignupBTN(false)
         try {
-            const res = await fetch("http://localhost:6001/user/signup", {
+            const res = await fetch("https://barter-backend.vercel.app/user/signup", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

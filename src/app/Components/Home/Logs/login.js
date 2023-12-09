@@ -48,7 +48,7 @@ export default function Login() {
         setLoginLoading(true);
         setLoginBTN(false)
         try {
-            const res = await fetch("http://localhost:6001/user/login", {
+            const res = await fetch("https://barter-backend.vercel.app/user/login", {
                 method: "POST", // Use "method" instead of "type"
                 headers: {
                     'Content-Type': 'application/json',

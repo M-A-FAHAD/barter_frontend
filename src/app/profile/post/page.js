@@ -178,7 +178,7 @@ export default function page() {
     const router = useRouter()
     //This is post api call
     const postApi = async () => {
-        const req = await fetch("http://localhost:6001/user/uploadpost", {
+        const req = await fetch("https://barter-backend.vercel.app/user/uploadpost", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

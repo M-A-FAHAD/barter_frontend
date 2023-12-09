@@ -5,7 +5,7 @@ export async function middleware(req) {
 
     try {
         if (token) {
-            const res = await fetch('http://localhost:6001/user/authentication', {
+            const res = await fetch('https://barter-backend.vercel.app/user/authentication', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
