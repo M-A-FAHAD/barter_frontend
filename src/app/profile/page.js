@@ -108,7 +108,7 @@ export default function Profile() {
             gsap.to('#password_not_mach', { marginBottom: 0 })
         } else {
             try {
-                const res = await fetch('http://localhost:6001/user/updateprofile', {
+                const res = await fetch('https://barter-backend.vercel.app/user/updateprofile', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
