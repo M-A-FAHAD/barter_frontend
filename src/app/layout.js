@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import StoreProvider from '../../public/RTK/storeProvider'
+import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ['latin'] })
 
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <StoreProvider>
           {children}
+          <Analytics />
         </StoreProvider>
       </body>
     </html>
